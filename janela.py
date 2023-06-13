@@ -16,9 +16,9 @@ class Aplicacao():
         self.lista_frame2()
         self.clear_list()
         self.comboboxMarca()
-        self.comboboxPanda()
-        self.extract_tabela()
-        self.export_tabela()
+        # self.comboboxPanda()
+        # self.extract_tabela()
+        # self.export_tabela()
         janela.mainloop()
 
     def tela(self):
@@ -46,13 +46,13 @@ class Aplicacao():
         self.cb_label = Label(self.frame_1, width=15, height=2, text="Marca", font=('Arial 10'), anchor='w')
         self.cb_label.place(relx=0.03, rely=0.10, relwidth=0.1, relheight=0.23)
 
-    def comboboxPanda(self):
-        names = ["CSV", "XLSX"]
-        self.cb_panda = ttk.Combobox(self.frame_1, values=names)
-        self.cb_panda.pack()
-        self.cb_panda.place(relx=0.39, rely=0.35, relwidth=0.1, relheight=0.50)
-        self.panda_label = Label(self.frame_1, width=15, height=2, text="Exportar", font=('Arial 10'), anchor='w')
-        self.panda_label.place(relx=0.39, rely=0.10, relwidth=0.1, relheight=0.23)
+    # def comboboxPanda(self):
+    #     names = ["CSV", "XLSX"]
+    #     self.cb_panda = ttk.Combobox(self.frame_1, values=names)
+    #     self.cb_panda.pack()
+    #     self.cb_panda.place(relx=0.39, rely=0.35, relwidth=0.1, relheight=0.50)
+    #     self.panda_label = Label(self.frame_1, width=15, height=2, text="Exportar", font=('Arial 10'), anchor='w')
+    #     self.panda_label.place(relx=0.39, rely=0.10, relwidth=0.1, relheight=0.23)
 
     def botoes(self):
         self.btBuscar = Button(self.frame_1, text="Buscar", command=self.select_list)
@@ -61,8 +61,8 @@ class Aplicacao():
         self.btLimpar = Button(self.frame_1, text="Limpar", command=self.clear_list)
         self.btLimpar.place(relx=0.27, rely=0.30, relwidth=0.1, relheight=0.50)
 
-        self.btExportar = Button(self.frame_1, text="Exportar", command=self.export_tabela)
-        self.btExportar.place(relx=0.51, rely=0.30, relwidth=0.1, relheight=0.50)
+        # self.btExportar = Button(self.frame_1, text="Exportar", command=self.export_tabela)
+        # self.btExportar.place(relx=0.51, rely=0.30, relwidth=0.1, relheight=0.50)
 
     def lista_frame2(self):
         self.listaCli = ttk.Treeview(self.frame_2, height=3, columns=('col1', 'col2', 'col3'))
@@ -98,23 +98,23 @@ class Aplicacao():
         linhas = cursor.fetchall()
         return linhas
 
-    def extract_tabela(self, tabela):
-        cursor.execute(f"SELECT * FROM {tabela}")
-        dados = cursor.fetchall
-        cursor.close()
-        return dados
-    
-    def export_tabela(self, dados):
-        self.dados = dados
-        dt = pd.DataFrame(self.dados, columns=["Descrição", "Valor"])
-        root = janela.Tk()
-        root.withdraw()
-        file_path = filedialog.asksaveasfilename(defaultextension= ".xlsx")
-        dt.to_excel(file_path, index=False)
+    # def extract_tabela(self, tabela):
+    #     cursor.execute(f"SELECT * FROM {tabela}")
+    #     dados = cursor.fetchall
+    #     cursor.close()
+    #     return dados
 
-        print("Exportação concluida")
+    # def export_tabela(self, dados):
+    #     self.dados = dados
+    #     dt = pd.DataFrame(self.dados, columns=["Descrição", "Valor"])
+    #     root = janela.Tk()
+    #     root.withdraw()
+    #     file_path = filedialog.asksaveasfilename(defaultextension= ".xlsx")
+    #     dt.to_excel(file_path, index=False)
 
-    
+    #     print("Exportação concluida")
+
+
 
     def clear_list(self):
         self.listaCli.delete(*self.listaCli.get_children())

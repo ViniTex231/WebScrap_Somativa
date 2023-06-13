@@ -19,9 +19,9 @@ class Web:
                 'xpath': '/html/body/div[1]/div[%VARIA%]/div[3]/div/div/div[2]/div/main/div[%VARIAVEL%]/a/div/div/span[2]'
             }
         }
-        options = webdriver.ChromeOptions()
+        options = webdriver.EdgeOptions()
         options.add_argument("--headless")
-        self.driver = webdriver.Chrome(options=options)
+        self.driver = webdriver.Edge(options=options)
         self.criar_tabela()
         self.abrir_site()
 
